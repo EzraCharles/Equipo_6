@@ -14,19 +14,20 @@ module ControlUnit2
 	input 		clk, rst,
 	input [5:0] Op, Funct,
 	
-	output reg			IorD,
-					Mem_Write,
-					IR_Write,
-					PC_Write,
-					Reg_Write,
-					PC_Src,
-					Branch,
-					ALU_SrcA,
-					Mem_Reg,
-					PC_J,
+	output reg		IorD,
+				Mem_Write,
+				IR_Write,
+				PC_Write,
+				Reg_Write,
+				PC_Src,
+				Branch,
+				ALU_SrcA,
+				Mem_Reg,
+				PC_J,
 	output reg [2:0] 	ALU_Control,
 	output reg [1:0] 	ALU_SrcB,
-				Reg_Dst, Zero_Ext
+				Reg_Dst, 
+				Zero_Ext
 				
 );
 
@@ -34,7 +35,7 @@ module ControlUnit2
 					
 	always @(y_C or Op or Funct)
 	begin: state_table
-		Y_N = 4'b0000;
+		Y_N 		= 4'b0000;
 		PC_Write 	= 1'b0;
 		Mem_Write 	= 1'b0;
 		IorD 		= 1'b0;
@@ -229,6 +230,17 @@ module ControlUnit2
 					Y_N = WB;
 				end
 				
+				else if (Op == 6'h0a)
+				begin //STLI
+					ALU_Control 	= 3'b101;
+					ALU_SrcB 	= 2'b10;
+					ALU_SrcA 	= 1'b1;
+					Mem_Reg 	= 1'b0;
+					Reg_Dst 	= 2'b00;
+					Zero_Ext 	= 2'b00;
+					Y_N = WB;
+				end
+				
 				if (Op == 6'h0 && Funct == 6'h08) 
 				begin // JR
 					ALU_Control 	= 3'b011;
@@ -336,6 +348,17 @@ module ControlUnit2
 					ALU_SrcB 	= 2'b11;
 					ALU_SrcA 	= 1'b0;
 					Reg_Dst 	= 2'b10;
+					Zero_Ext 	= 2'b00;
+					Y_N = IF;
+				end
+
+				else if (Op == 6'h0a)
+				begin //STLI
+					ALU_Control 	= 3'b101;
+					ALU_SrcB 	= 2'b10;
+					ALU_SrcA 	= 1'b1;
+					Mem_Reg 	= 1'b0;
+					Reg_Dst 	= 2'b00;
 					Zero_Ext 	= 2'b00;
 					Y_N = IF;
 				end
