@@ -5,9 +5,9 @@ module ALU  // ARITHMETIC UNIT
 )
 (
 	input		[WIDTH-1: 0]	data_a, data_b,
-	input		[2: 0]	select,
-	output reg [WIDTH-1: 0] y,
-	output reg zero
+	input		[2:0]	select,
+	output reg 	[WIDTH-1: 0] y,
+	output reg 	zero
 );		 
 
 
