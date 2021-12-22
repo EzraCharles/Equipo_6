@@ -115,7 +115,7 @@ Sign_Extend		SE(.Sign_Ext_i(Ins_Reg_o[15:0]), .Sign_Ext_o(Sign_Extend_o));
 Zero_extend 		ZE_EXT(.GPIO_i(Ins_Reg_o[15:0]), .Zero_Ext(Zero_Extend_o)); // GPIO_i
 
 //MUX TO DECIDE IF GPIO OR SIGN EXTEND 
-MUX4_1		GPIO_SIGN(.data_1(Sign_Extend_o), .data_2(Zero_Extend_o), .data_3( { Ins_Reg_o[15:0], {16{1'b0}} }), .data_4({{24{1'b0}},GPIO_i}), .selector(Selector_Zero), .data_o(Mux_SZ_Ext_o));
+MUX4_1		GPIO_SIGN(.data_1(Sign_Extend_o), .data_2(Zero_Extend_o), .data_3( { Ins_Reg_o[15:0], {16{1'b0}} }), .data_4({{24{GPIO_i[7]}},GPIO_i}), .selector(Selector_Zero), .data_o(Mux_SZ_Ext_o));
 
 //Control Unit
 ControlUnit2 FSM( 

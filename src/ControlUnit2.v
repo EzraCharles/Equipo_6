@@ -198,8 +198,8 @@ module ControlUnit2
 					Y_N = WB;
 				end
 				
-				else if (Op == 6'h08 || Op == 6'h09)
-				begin //ADDI & ADDIU
+				else if (Op == 6'h08)
+				begin //ADDI 
 					ALU_Control 	= 3'b001;
 					ALU_SrcB 	= 2'b10;
 					ALU_SrcA 	= 1'b1;
@@ -209,6 +209,17 @@ module ControlUnit2
 					Y_N = WB;
 				end	
 				
+				else if (Op == 6'h09)
+				begin //ADDIU
+					ALU_Control 	= 3'b001;
+					ALU_SrcB 	= 2'b11;
+					ALU_SrcA 	= 1'b1;
+					Mem_Reg 	= 1'b0;
+					Reg_Dst 	= 2'b00;
+					Zero_Ext 	= 2'b00;
+					Y_N = WB;
+				end
+
 				else if (Op == 6'h0d)
 				begin //ORI
 					ALU_Control 	= 3'b011;
@@ -374,8 +385,8 @@ module ControlUnit2
 					Y_N = IF;
 				end
 				
-				else if(Op == 6'h8 || Op == 6'h09) 
-				begin // addi & addiu
+				else if(Op == 6'h0 ) 
+				begin // addi 
 					ALU_Control 	= 3'b001;
 					ALU_SrcB 	= 2'b10;
 					ALU_SrcA 	= 1'b1;
@@ -384,6 +395,17 @@ module ControlUnit2
 					Y_N = IF;
 				end
 				
+				else if (Op == 6'h09)
+				begin //ADDIU
+					ALU_Control 	= 3'b001;
+					ALU_SrcB 	= 2'b11;
+					ALU_SrcA 	= 1'b1;
+					Mem_Reg 	= 1'b0;
+					Reg_Dst 	= 2'b00;
+					Zero_Ext 	= 2'b00;
+					Y_N = IF;
+				end
+
 				else if (Op == 6'h0d)
 				begin //ORI
 					ALU_Control 	= 3'b011;
