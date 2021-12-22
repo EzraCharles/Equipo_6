@@ -212,11 +212,11 @@ module ControlUnit2
 				else if (Op == 6'h09)
 				begin //ADDIU
 					ALU_Control 	= 3'b001;
-					ALU_SrcB 	= 2'b11;
+					ALU_SrcB 	= 2'b10;
 					ALU_SrcA 	= 1'b1;
 					Mem_Reg 	= 1'b0;
 					Reg_Dst 	= 2'b00;
-					Zero_Ext 	= 2'b00;
+					Zero_Ext 	= 2'b11;
 					Y_N = WB;
 				end
 
@@ -398,11 +398,11 @@ module ControlUnit2
 				else if (Op == 6'h09)
 				begin //ADDIU
 					ALU_Control 	= 3'b001;
-					ALU_SrcB 	= 2'b11;
+					ALU_SrcB 	= 2'b10;
 					ALU_SrcA 	= 1'b1;
 					Mem_Reg 	= 1'b0;
 					Reg_Dst 	= 2'b00;
-					Zero_Ext 	= 2'b00;
+					Zero_Ext 	= 2'b11;
 					Y_N = IF;
 				end
 

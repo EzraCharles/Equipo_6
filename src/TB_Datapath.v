@@ -28,7 +28,7 @@ initial begin
 	#1 reset_tb = 1'b1;
 	#3 reset_tb = 1'b0;
 	#3 reset_tb = 1'b1;
-	GPIO_i_tb = 8'h3;
+	GPIO_i_tb = 8'h05;
 end
 
 /***** IorD MUX and PC 400000*****/
