@@ -93,9 +93,14 @@ module ControlUnit2
 				Y_N = BEQ;
 				end
 				
-				else if(Op == 6'h02 || Op == 6'h03)
+				else if(Op == 6'h02)
 				begin // JMP
 				Y_N = JMP;
+				end
+				
+				else if(Op == 6'h03)
+				begin //JAL
+				Y_N = EX;
 				end
 				
 				else if(Op == 6'h23 || Op == 6'h2b)
@@ -143,7 +148,7 @@ module ControlUnit2
 				
 				if (Op == 6'h03)
 				begin
-				Y_N = JAL;
+				Y_N = IF;
 				end
 
 				else
@@ -160,15 +165,15 @@ module ControlUnit2
 				PC_Src 		= 1'b0;
 				Branch 		= 1'b0;
 				ALU_Control 	= 3'b111;
-				ALU_SrcB 	= 2'b11;
+				ALU_SrcB 	= 2'b01;
 				ALU_SrcA 	= 1'b0;
-				Reg_Write 	= 1'b0; //1
+				Reg_Write 	= 1'b1; //1
 				Mem_Reg 	= 1'b0;
 				Reg_Dst 	= 2'b10;
-				PC_J 		= 1'b0;
+				PC_J 		= 1'b1;
 				Zero_Ext 	= 2'b00;
 				
-				Y_N = WB;
+				Y_N = JMP;
 			end
 			EX: begin
 				PC_Write 	= 1'b0;
@@ -248,9 +253,20 @@ module ControlUnit2
 					Y_N = WB;
 				end
 				
-				if (Op == 6'h0 && Funct == 6'h08) 
+				else if(Op == 6'h03)
+				begin //JAL
+					ALU_Control 	= 3'b111;
+					ALU_SrcB 	= 2'b10;
+					ALU_SrcA 	= 1'b0;
+					Mem_Reg 	= 1'b0;
+					Reg_Dst 	= 2'b00;
+					Zero_Ext 	= 2'b00;
+					Y_N = JAL;
+				end
+
+				else if (Op == 6'h0 && Funct == 6'h08) 
 				begin // JR
-					ALU_Control 	= 3'b011;
+					ALU_Control 	= 3'b111;
 					ALU_SrcB 	= 2'b00;
 					ALU_SrcA 	= 1'b1;
 					Mem_Reg 	= 1'b0;
@@ -387,13 +403,17 @@ module ControlUnit2
 					Y_N = IF;
 				end
 				
-				if (Op == 6'h0 && Funct == 6'h08) 
+				if (Op == 6'h00 && Funct == 6'h08) 
 				begin // JR
-					ALU_Control 	= 3'b010;
+					PC_Write 	= 1'b1;
+					ALU_Control 	= 3'b111;
 					ALU_SrcB 	= 2'b00;
 					ALU_SrcA 	= 1'b1;
 					Reg_Dst 	= 2'b00;
 					Zero_Ext 	= 2'b01;
+					Reg_Write	= 1'b0;
+					PC_J 		= 1'b1;
+					PC_Src		= 1'b1;
 					Y_N = IF;
 				end
 			
