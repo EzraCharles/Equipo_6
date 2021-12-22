@@ -10,7 +10,7 @@ module ControlUnit2
 			JMP 	= 4'b0110, 	// STATE TO JUMP
 			JAL 	= 4'b0111,	// STATE TO JAL
 			SW 	= 4'b1000, 	// STATE TO STORE WORD
-			LW 	= 4'b1001
+			LW 	= 4'b1001	// STATE TO LOAD WORD
 )
 (
 	input 		clk, rst,
@@ -275,6 +275,17 @@ module ControlUnit2
 					Y_N = WB;
 				end
 				
+				else if (Op == 6'h1c)
+				begin //MUL
+					ALU_Control 	= 3'b110;
+					ALU_SrcB 	= 2'b00;
+					ALU_SrcA 	= 1'b1;
+					Mem_Reg 	= 1'b0;
+					Reg_Dst 	= 2'b01;
+					Zero_Ext 	= 2'b01;
+					Y_N = WB;
+				end
+				
 			end
 			
 			MA: begin
@@ -446,6 +457,17 @@ module ControlUnit2
 					Mem_Reg 	= 1'b1;
 					Reg_Dst		= 2'b00;	
 					Zero_Ext 	= 2'b00;
+					Y_N = IF;
+				end
+				
+				else if (Op == 6'h1c)
+				begin //MUL
+					ALU_Control 	= 3'b110;
+					ALU_SrcB 	= 2'b00;
+					ALU_SrcA 	= 1'b1;
+					Mem_Reg 	= 1'b0;
+					Reg_Dst 	= 2'b01;
+					Zero_Ext 	= 2'b01;
 					Y_N = IF;
 				end
 			end
