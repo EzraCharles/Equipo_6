@@ -10,25 +10,25 @@ module Data_Path
 );
 
 wire [31:0]	PC_o, 
-				Mux1_o, 
-				Mem_o, 
-				Ins_Reg_o,
-				Data_Reg_o,
-				Mux_RF_WD,
-				Data1_o, 
-				Data2_o,
-				Reg_A_o,
-				Reg_B_o,
-				Src_A,
-				Src_B,
-				ALU_o,
-				Reg_ALU_o,
-				PC_source_o,
-				PC_ALU,
-				Jump_o,
-				Sign_Extend_o,
-				Zero_Extend_o,
-				Mux_SZ_Ext_o;
+		Mux1_o, 
+		Mem_o, 
+		Ins_Reg_o,
+		Data_Reg_o,
+		Mux_RF_WD,
+		Data1_o, 
+		Data2_o,
+		Reg_A_o,
+		Reg_B_o,
+		Src_A,
+		Src_B,
+		ALU_o,
+		Reg_ALU_o,
+		PC_source_o,
+		PC_ALU,
+		Jump_o,
+		Sign_Extend_o,
+		Zero_Extend_o,
+		Mux_SZ_Ext_o;
 				
 wire [4:0]	Mux2_o;
 
@@ -44,13 +44,15 @@ wire		enable_PC,
 		PC_Write,
 		AND_o,
 		Selector_Jump,
-		Zero;
+		Zero,
+		enable_GPIO_o;
 		
 wire [1:0] 	Selector_ALU_Src_B,
 				Selector_RF_WR,
 				Selector_Zero;
 				
 wire [2:0] 	Selector_ALU_Op;
+wire [7:0] 	GPIO_Reg;
 
 // PROGRAM COUNTER
 Program_counter 	PC(.D(PC_source_o), .clk(clk), .reset(reset), .enable(enable_PC), .Q(PC_o));
@@ -102,6 +104,9 @@ ALU		Alu_mod(.data_a(Src_A), .data_b(Src_B), .select(Selector_ALU_Op), .y(ALU_o)
 //REGISTER ALU OUT
 Register_W_en 	Read_ALU_Output(.D(ALU_o), .clk(clk), .reset(reset), .Q(Reg_ALU_o));
 
+//REGISTER GPIO_o
+FF 	#(.WIDTH(8)) GPIO_out(.D(GPIO_Reg), .clk(clk), .reset(reset), .enable(enable_GPIO_o), .Q(GPIO_o));
+
 //MUX TO DECIDE PROGRAMM COUNTER SOURCE
 MUX2_1		PC_Source(.data_1(Reg_ALU_o), .data_2(ALU_o), .selector(Selector_PC_Source), .data_o(PC_ALU));
 
@@ -136,7 +141,8 @@ ControlUnit2 FSM(
 					.PC_J(Selector_Jump),
 					.ALU_Control(Selector_ALU_Op),
 					.ALU_SrcB(Selector_ALU_Src_B),
-					.Zero_Ext(Selector_Zero)
+					.Zero_Ext(Selector_Zero),
+					.GPIO_o(enable_GPIO_o)
 );
 
 and Comp1 (AND_o, Branch, Zero);
@@ -145,5 +151,5 @@ or Comp2 (enable_PC, PC_Write, AND_o);
 
 //Datapath Output to GPIO
 
-assign GPIO_o = ALU_o[7:0];
+assign GPIO_Reg = ALU_o[7:0];
 endmodule 

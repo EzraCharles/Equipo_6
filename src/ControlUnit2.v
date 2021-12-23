@@ -16,16 +16,17 @@ module ControlUnit2
 	input 		clk, rst,
 	input [5:0] Op, Funct,
 	
-	output reg		IorD,
-				Mem_Write,
-				IR_Write,
-				PC_Write,
-				Reg_Write,
-				PC_Src,
-				Branch,
-				ALU_SrcA,
-				Mem_Reg,
-				PC_J,
+	output reg	IorD,
+			Mem_Write,
+			IR_Write,
+			PC_Write,
+			Reg_Write,
+			PC_Src,
+			Branch,
+			ALU_SrcA,
+			Mem_Reg,
+			PC_J,
+			GPIO_o,
 	output reg [2:0] 	ALU_Control,
 	output reg [1:0] 	ALU_SrcB,
 				Reg_Dst, 
@@ -37,21 +38,22 @@ module ControlUnit2
 					
 	always @(y_C or Op or Funct)
 	begin: state_table
-		Y_N 		= 4'b0000;
-		PC_Write 	= 1'b0;
-		Mem_Write 	= 1'b0;
-		IorD 		= 1'b0;
-		IR_Write 	= 1'b0;
-		PC_Src 		= 1'b0;
-		Branch 		= 1'b0;
-		ALU_Control 	= 3'b000;
-		ALU_SrcB 	= 2'b00;
-		ALU_SrcA 	= 1'b0;
-		Reg_Write 	= 1'b0;
-		Mem_Reg 	= 1'b0; 
-		Reg_Dst 	= 2'b00;
-		PC_J 		= 1'b0;
-		Zero_Ext 	= 2'b00;
+	Y_N 		= 4'b0000;
+	PC_Write 	= 1'b0;
+	Mem_Write 	= 1'b0;
+	IorD 		= 1'b0;
+	IR_Write 	= 1'b0;
+	PC_Src 		= 1'b0;
+	Branch 		= 1'b0;
+	ALU_Control 	= 3'b000;
+	ALU_SrcB 	= 2'b00;
+	ALU_SrcA 	= 1'b0;
+	Reg_Write 	= 1'b0;
+	Mem_Reg 	= 1'b0; 
+	Reg_Dst 	= 2'b00;
+	PC_J 		= 1'b0;
+	Zero_Ext 	= 2'b00;
+	GPIO_o 		= 1'b0;
 		
 		case(y_C)
 			IF: begin
@@ -69,6 +71,7 @@ module ControlUnit2
 				Reg_Dst 	= 2'b00;
 				PC_J 		= 1'b1;
 				Zero_Ext 	= 2'b00;
+				GPIO_o 		= 1'b0;
 				Y_N = ID;
 			end
 			
@@ -87,6 +90,7 @@ module ControlUnit2
 				Reg_Dst 	= 2'b00;
 				PC_J 		= 1'b1;
 				Zero_Ext 	= 2'b00;
+				GPIO_o 		= 1'b0;
 				
 				if (Op == 6'h04) 
 				begin // BEQ
@@ -128,6 +132,7 @@ module ControlUnit2
 				Mem_Reg 	= 1'b0;
 				Reg_Dst 	= 2'b00;
 				PC_J 		= 1'b1;
+				GPIO_o 		= 1'b0;
 				Y_N = IF;
 			end
 
@@ -145,6 +150,7 @@ module ControlUnit2
 				Mem_Reg 	= 1'b0;
 				Reg_Dst 	= 2'b00;
 				PC_J 		= 1'b0;
+				GPIO_o 		= 1'b0;
 				
 				if (Op == 6'h03)
 				begin
@@ -172,6 +178,7 @@ module ControlUnit2
 				Reg_Dst 	= 2'b10;
 				PC_J 		= 1'b1;
 				Zero_Ext 	= 2'b00;
+				GPIO_o 		= 1'b0;
 				
 				Y_N = JMP;
 			end
@@ -184,6 +191,7 @@ module ControlUnit2
 				Branch 		= 1'b0;
 				Reg_Write 	= 1'b0;
 				PC_J 		= 1'b1;
+				GPIO_o 		= 1'b0;
 				Y_N = WB;
 				
 				
@@ -314,6 +322,7 @@ module ControlUnit2
 				Reg_Dst 	= 2'b00;
 				PC_J 		= 1'b0;
 				Zero_Ext 	= 2'b00;
+				GPIO_o 		= 1'b0;
 				
 				if(Op == 6'h2b)
 				begin //SW
@@ -342,6 +351,7 @@ module ControlUnit2
 				Reg_Dst 	= 2'b00;
 				PC_J 		= 1'b1;
 				Zero_Ext 	= 2'b00;
+				GPIO_o 		= 1'b0;
 				Y_N = IF;
 			end
 
@@ -360,6 +370,7 @@ module ControlUnit2
 				Reg_Dst 	= 2'b00;
 				PC_J 		= 1'b1;
 				Zero_Ext 	= 2'b00;
+				GPIO_o 		= 1'b0;
 				Y_N = WB;
 			end
 			
@@ -373,6 +384,7 @@ module ControlUnit2
 				Reg_Write 	= 1'b1;
 				Mem_Reg 	= 1'b0;
 				PC_J 		= 1'b1;
+				GPIO_o 		= 1'b0;
 				
 				
 				if(Op == 6'h0 && Funct == 6'h20) 
@@ -490,6 +502,7 @@ module ControlUnit2
 					Mem_Reg 	= 1'b0;
 					Reg_Dst 	= 2'b01;
 					Zero_Ext 	= 2'b01;
+					GPIO_o 		= 1'b1;
 					Y_N = IF;
 				end
 			end

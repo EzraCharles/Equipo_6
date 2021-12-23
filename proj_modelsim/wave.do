@@ -3,26 +3,25 @@ quietly WaveActivateNextPane {} 0
 add wave -noupdate -radix binary /TB_Datapath/clk_tb
 add wave -noupdate -radix binary /TB_Datapath/reset_tb
 add wave -noupdate -expand -group GPIO_i -radix hexadecimal /TB_Datapath/DUT/ZE_EXT/GPIO_i
-add wave -noupdate -expand -group GPIO_i -radix hexadecimal /TB_Datapath/DUT/ZE_EXT/Zero_Ext
-add wave -noupdate -group GPIO_o -color {Green Yellow} -radix hexadecimal -childformat {{{/TB_Datapath/GPIO_o_tb[7]} -radix hexadecimal} {{/TB_Datapath/GPIO_o_tb[6]} -radix hexadecimal} {{/TB_Datapath/GPIO_o_tb[5]} -radix hexadecimal} {{/TB_Datapath/GPIO_o_tb[4]} -radix hexadecimal} {{/TB_Datapath/GPIO_o_tb[3]} -radix hexadecimal} {{/TB_Datapath/GPIO_o_tb[2]} -radix hexadecimal} {{/TB_Datapath/GPIO_o_tb[1]} -radix hexadecimal} {{/TB_Datapath/GPIO_o_tb[0]} -radix hexadecimal}} -subitemconfig {{/TB_Datapath/GPIO_o_tb[7]} {-color {Green Yellow} -height 15 -radix hexadecimal} {/TB_Datapath/GPIO_o_tb[6]} {-color {Green Yellow} -height 15 -radix hexadecimal} {/TB_Datapath/GPIO_o_tb[5]} {-color {Green Yellow} -height 15 -radix hexadecimal} {/TB_Datapath/GPIO_o_tb[4]} {-color {Green Yellow} -height 15 -radix hexadecimal} {/TB_Datapath/GPIO_o_tb[3]} {-color {Green Yellow} -height 15 -radix hexadecimal} {/TB_Datapath/GPIO_o_tb[2]} {-color {Green Yellow} -height 15 -radix hexadecimal} {/TB_Datapath/GPIO_o_tb[1]} {-color {Green Yellow} -height 15 -radix hexadecimal} {/TB_Datapath/GPIO_o_tb[0]} {-color {Green Yellow} -height 15 -radix hexadecimal}} /TB_Datapath/GPIO_o_tb
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Op
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Funct
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/IorD
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Mem_Write
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/IR_Write
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/PC_Write
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Reg_Write
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/PC_Src
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Branch
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/ALU_SrcA
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Mem_Reg
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/PC_J
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/ALU_Control
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/ALU_SrcB
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Reg_Dst
-add wave -noupdate -expand -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Zero_Ext
-add wave -noupdate -expand -group Control_Unit -color Yellow -radix binary /TB_Datapath/DUT/FSM/y_C
-add wave -noupdate -expand -group Control_Unit -color Yellow -radix binary /TB_Datapath/DUT/FSM/Y_N
+add wave -noupdate -expand -group GPIO_o -color {Green Yellow} -radix hexadecimal -childformat {{{/TB_Datapath/GPIO_o_tb[7]} -radix hexadecimal} {{/TB_Datapath/GPIO_o_tb[6]} -radix hexadecimal} {{/TB_Datapath/GPIO_o_tb[5]} -radix hexadecimal} {{/TB_Datapath/GPIO_o_tb[4]} -radix hexadecimal} {{/TB_Datapath/GPIO_o_tb[3]} -radix hexadecimal} {{/TB_Datapath/GPIO_o_tb[2]} -radix hexadecimal} {{/TB_Datapath/GPIO_o_tb[1]} -radix hexadecimal} {{/TB_Datapath/GPIO_o_tb[0]} -radix hexadecimal}} -subitemconfig {{/TB_Datapath/GPIO_o_tb[7]} {-color {Green Yellow} -height 15 -radix hexadecimal} {/TB_Datapath/GPIO_o_tb[6]} {-color {Green Yellow} -height 15 -radix hexadecimal} {/TB_Datapath/GPIO_o_tb[5]} {-color {Green Yellow} -height 15 -radix hexadecimal} {/TB_Datapath/GPIO_o_tb[4]} {-color {Green Yellow} -height 15 -radix hexadecimal} {/TB_Datapath/GPIO_o_tb[3]} {-color {Green Yellow} -height 15 -radix hexadecimal} {/TB_Datapath/GPIO_o_tb[2]} {-color {Green Yellow} -height 15 -radix hexadecimal} {/TB_Datapath/GPIO_o_tb[1]} {-color {Green Yellow} -height 15 -radix hexadecimal} {/TB_Datapath/GPIO_o_tb[0]} {-color {Green Yellow} -height 15 -radix hexadecimal}} /TB_Datapath/GPIO_o_tb
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Op
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Funct
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/IorD
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Mem_Write
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/IR_Write
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/PC_Write
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Reg_Write
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/PC_Src
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Branch
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/ALU_SrcA
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Mem_Reg
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/PC_J
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/ALU_Control
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/ALU_SrcB
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Reg_Dst
+add wave -noupdate -group Control_Unit -color Yellow /TB_Datapath/DUT/FSM/Zero_Ext
+add wave -noupdate -group Control_Unit -color Yellow -radix binary /TB_Datapath/DUT/FSM/y_C
+add wave -noupdate -group Control_Unit -color Yellow -radix binary /TB_Datapath/DUT/FSM/Y_N
 add wave -noupdate -expand -group {Program Counter} -color Coral /TB_Datapath/DUT/PC/enable
 add wave -noupdate -expand -group {Program Counter} -color Coral -radix hexadecimal /TB_Datapath/DUT/PC/Q
 add wave -noupdate -group {MUX Address} -color White -radix hexadecimal -childformat {{{/TB_Datapath/DUT/Address_MUX/data_1[31]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[30]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[29]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[28]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[27]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[26]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[25]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[24]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[23]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[22]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[21]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[20]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[19]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[18]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[17]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[16]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[15]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[14]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[13]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[12]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[11]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[10]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[9]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[8]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[7]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[6]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[5]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[4]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[3]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[2]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[1]} -radix hexadecimal} {{/TB_Datapath/DUT/Address_MUX/data_1[0]} -radix hexadecimal}} -subitemconfig {{/TB_Datapath/DUT/Address_MUX/data_1[31]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[30]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[29]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[28]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[27]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[26]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[25]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[24]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[23]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[22]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[21]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[20]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[19]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[18]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[17]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[16]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[15]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[14]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[13]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[12]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[11]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[10]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[9]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[8]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[7]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[6]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[5]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[4]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[3]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[2]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[1]} {-color White -height 15 -radix hexadecimal} {/TB_Datapath/DUT/Address_MUX/data_1[0]} {-color White -height 15 -radix hexadecimal}} /TB_Datapath/DUT/Address_MUX/data_1
@@ -55,14 +54,14 @@ add wave -noupdate -expand -group Src_B -color {Medium Violet Red} -radix hexade
 add wave -noupdate -expand -group ALU -radix hexadecimal /TB_Datapath/DUT/Alu_mod/select
 add wave -noupdate -expand -group ALU -radix hexadecimal /TB_Datapath/DUT/Alu_mod/y
 add wave -noupdate -expand -group ALU /TB_Datapath/DUT/Alu_mod/zero
-add wave -noupdate -group MUX_SZ_Ext -radix hexadecimal /TB_Datapath/DUT/GPIO_SIGN/data_1
-add wave -noupdate -group MUX_SZ_Ext -radix hexadecimal /TB_Datapath/DUT/GPIO_SIGN/data_2
-add wave -noupdate -group MUX_SZ_Ext -radix hexadecimal /TB_Datapath/DUT/GPIO_SIGN/data_3
-add wave -noupdate -group MUX_SZ_Ext -radix hexadecimal /TB_Datapath/DUT/GPIO_SIGN/data_4
-add wave -noupdate -group MUX_SZ_Ext /TB_Datapath/DUT/GPIO_SIGN/selector
-add wave -noupdate -group MUX_SZ_Ext -radix hexadecimal /TB_Datapath/DUT/GPIO_SIGN/data_o
+add wave -noupdate -expand -group MUX_SZ_Ext -radix hexadecimal /TB_Datapath/DUT/GPIO_SIGN/data_1
+add wave -noupdate -expand -group MUX_SZ_Ext -radix hexadecimal /TB_Datapath/DUT/GPIO_SIGN/data_2
+add wave -noupdate -expand -group MUX_SZ_Ext -radix hexadecimal /TB_Datapath/DUT/GPIO_SIGN/data_3
+add wave -noupdate -expand -group MUX_SZ_Ext -radix hexadecimal /TB_Datapath/DUT/GPIO_SIGN/data_4
+add wave -noupdate -expand -group MUX_SZ_Ext /TB_Datapath/DUT/GPIO_SIGN/selector
+add wave -noupdate -expand -group MUX_SZ_Ext -radix hexadecimal /TB_Datapath/DUT/GPIO_SIGN/data_o
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {416 ps} 0}
+WaveRestoreCursors {{Cursor 1} {1002 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 184
 configure wave -valuecolwidth 110
@@ -78,4 +77,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {409 ps} {435 ps}
+WaveRestoreZoom {997 ps} {1016 ps}
